@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,14 +24,15 @@ namespace shizaa
             InitializeComponent();
             new Thread(async () => {
                 ulong da = 0;
+                StreamWriter file = new StreamWriter("C:\\govno.txt");
                 while (true)
                 {
-                    
+                    file.Write("ШУЕ");//будем пытаться майнить на шпинделе?
                     da++;
                     
                     Dispatcher.Invoke(() =>
                     {
-                        pisya.Text = $"{da}";
+                        pisya.Text = $"{da} биткойнов";
                     });
                     await Task.Delay(100);
                 }
