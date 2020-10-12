@@ -16,18 +16,16 @@ using System.Windows.Shapes;
 
 namespace shizaa
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             new Thread(async () => {
-                while(true)
+                ulong da = 0;
+                while (true)
                 {
-                    ulong da = 0;
+                    
                     da++;
                     
                     Dispatcher.Invoke(() =>
