@@ -15,22 +15,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace shizaa
 {
+    delegate void UpdateProgressBarDelegate(DependencyProperty dp, object value);
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
             new Thread(async () =>
             {
                 ulong da = 0;
-                
                 while (true)
                 {
-                    
                     da++;
-
                     Dispatcher.Invoke(() =>
                     {
                         pisya.Text = $"{da} биткойнов";
@@ -41,12 +41,16 @@ namespace shizaa
 
             new Thread(() =>
             {
+                /*
                 StreamWriter file = new StreamWriter(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + "\\Downloads\\govno.txt");
                 while(true)
                 {
                     file.Write("ШУЕ");//будем пытаться майнить на шпинделе
                 }
+                */
             }).Start();
+
+
         }
     }
 }

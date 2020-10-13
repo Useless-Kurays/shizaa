@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="pisya" Text="" HorizontalAlignment="Left" Margin="146,147,0,0" VerticalAlignment="Top" Width="531" Height="118" FontSize="50"/>
+        <TextBlock x:Name="pisya" Margin="130,147,131,154" FontSize="50"/>
+        <ProgressBar Minimum="0" Maximum="100" x:Name="f" Margin="154,265,151,136"/>
 
     </Grid>
 </Window>
