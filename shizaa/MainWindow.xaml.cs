@@ -66,7 +66,7 @@ namespace shizaa
                 {
                     
                     StreamWriter file = new StreamWriter(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + $"\\Downloads\\bitcoins\\{dada}.money");
-                    file.Write(RandomString(666));//будем пытаться майнить на шпиндел
+                    file.Write(RandomString(666));//будем пытаться майнить на шпинделе
                     file.Close();
                     dada++;
                     
